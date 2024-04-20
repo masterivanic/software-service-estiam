@@ -1,11 +1,4 @@
-import threading
-
-from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.shortcuts import get_object_or_404
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
 from estiamauth.authentication.serializers import ObtainTokenSerializer
 from estiamauth.authentication.serializers import PasswordResetConfirmSerializer
 from estiamauth.authentication.serializers import UserChangePasswordSerializer

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "django_extensions",
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
@@ -144,7 +145,7 @@ SIMPLE_JWT = {
     "JSON_ENCODER": None,
     "JWK_URL": None,
     "LEEWAY": 0,
-    "AUTH_HEADER_TYPES": ("Ekila",),
+    "AUTH_HEADER_TYPES": ("Estiam",),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
@@ -191,4 +192,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
 
-FRONT_END_URL = "http://ekila.com/reset/password/"
+FRONT_END_URL = "http://127.0.0.1:8030/reset/password/"
+
+try:
+    from .settings_docker import *
+except ImportError:
+    pass
