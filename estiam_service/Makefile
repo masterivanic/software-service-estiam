@@ -1,7 +1,3 @@
-
-wait_db:
-	python manage.py wait_for_db
-
 migrate:
 	python manage.py makemigrations && python manage.py migrate --noinput
 
