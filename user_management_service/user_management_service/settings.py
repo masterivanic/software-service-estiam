@@ -30,11 +30,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "estiam_user",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "drf_spectacular",
+    "corsheaders",
+    "django_extensions",
     "django.contrib.staticfiles",
 ]
 
@@ -116,7 +120,29 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+AUTH_USER_MODEL = "estiam_user.EstiamUser"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "ESTIAM USER MANAGEMENT API",
+    "DESCRIPTION": "API for ESTIAM USER ",
+    "VERSION": "1.0.0",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "ESTIAM AUTH API",
+    "DESCRIPTION": "API for ESTIAM USER ",
+    "VERSION": "1.0.0",
+    "COMPONENT_SPLIT_REQUEST": True,
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 10,
+}
