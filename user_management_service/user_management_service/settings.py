@@ -50,6 +50,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "user_management_service.auth-middleware.EstiamAuthenticationMiddleware",
 ]
 
 ROOT_URLCONF = "user_management_service.urls"
@@ -128,21 +129,34 @@ AUTH_USER_MODEL = "estiam_user.EstiamUser"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("Estiam",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_ID_FIELD": "id",
+}
+
 SPECTACULAR_SETTINGS = {
     "TITLE": "ESTIAM USER MANAGEMENT API",
-    "DESCRIPTION": "API for ESTIAM USER ",
+    "DESCRIPTION": "API FOR ESTIAM USER ",
     "VERSION": "1.0.0",
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "ESTIAM AUTH API",
-    "DESCRIPTION": "API for ESTIAM USER ",
+    "TITLE": "ESTIAM MANAGEMENT USER API",
+    "DESCRIPTION": "API FOR ESTIAM USER ",
     "VERSION": "1.0.0",
     "COMPONENT_SPLIT_REQUEST": True,
 }
 
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "user_management_service.auth.EstiamAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
 }
+
+AUTH_ESTIAM_SERVICE = "http://localhost:8000/"
