@@ -5,7 +5,6 @@ from django.conf import settings
 from django.http.response import HttpResponse
 from django.utils.deprecation import MiddlewareMixin
 from django.utils.translation import gettext_lazy as _
-from rest_framework_simplejwt.exceptions import AuthenticationFailed
 
 
 class EstiamAuthenticationMiddleware(MiddlewareMixin):
@@ -29,7 +28,7 @@ class EstiamAuthenticationMiddleware(MiddlewareMixin):
             )
             if not request.ok:
                 return HttpResponse(
-                    json.dumps(AuthenticationFailed(_("Invalid or expired token."))),
+                    json.dumps("Invalid or expired token."),
                     status=401,
                 )
             response = requests.get(
