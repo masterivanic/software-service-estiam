@@ -16,6 +16,9 @@ class EstiamAuthenticationMiddleware(MiddlewareMixin):
         self.get_response = get_response
 
     def process_request(self, request):
+        if "admin" in request.path:
+            return self.get_response(request)
+
         jwt_token = request.headers.get("authorization", None)
         if jwt_token is None:
             return HttpResponse(json.dumps({"detail": "missing token"}), status=401)
