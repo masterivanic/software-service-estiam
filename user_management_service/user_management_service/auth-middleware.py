@@ -16,7 +16,9 @@ class EstiamAuthenticationMiddleware(MiddlewareMixin):
         self.get_response = get_response
 
     def process_request(self, request):
-        if "admin" in request.path:
+        if any(
+            substring in request.path for substring in ["admin", "swagger", "schema"]
+        ):
             return self.get_response(request)
 
         jwt_token = request.headers.get("authorization", None)
