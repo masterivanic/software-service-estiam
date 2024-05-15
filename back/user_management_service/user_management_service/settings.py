@@ -160,3 +160,9 @@ REST_FRAMEWORK = {
 }
 
 AUTH_ESTIAM_SERVICE = "http://127.0.0.1:8030/"
+
+try:
+    from .settings_docker import *
+except ImportError:
+    pass
+
