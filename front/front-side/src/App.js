@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import SideMenu from './components/SideMenu';
+import HomePage from './pages/Vitrine';
+import Form from './pages/Form';
+import UserList from './pages/UserList';
+import { AuthProvider, useAuth } from './AuthContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <div className="App">
+          <Content />
+      </div>
+    </AuthProvider>
+  );
+}
+
+const Content = () => {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
+
+  return (
+    <>
+      {location.pathname !== "/" && <SideMenu />}
+      <div className='container'>
+        <Routes>
+          <Route path="/" element={<Form />} />
+          <Route path="/home" element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} />
+          <Route path="/users" element={isAuthenticated ? <UserList /> : <Navigate to="/" />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
