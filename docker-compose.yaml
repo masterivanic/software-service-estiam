@@ -22,10 +22,10 @@ services:
       - .:/app
       - "staticfiles-data:/var/www/static"
       - "media-data:/var/www/media"
-    depends_on:
-      - db
     ports:
       - "8030:8030"
+    depends_on:
+      - db
 
   user-service-estiam:
     build:
@@ -40,18 +40,16 @@ services:
       - .:/app
       - "staticfiles-data:/var/www/static"
       - "media-data:/var/www/media"
-    depends_on:
-      - db
     ports:
       - "8000:8000"
+    depends_on:
+      - db
 
   front-service-estiam:
     build:
       context: ./front/front-side
       dockerfile: Dockerfile
     image: front:1.0
-    volumes:
-      - .:/app
     ports:
       - "5000:5000"
 
