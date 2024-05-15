@@ -22,7 +22,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "HOST": os.getenv("POSTGRES_HOST", "db"),
-        "NAME": "estiam_auth_db",
+        "NAME": "estiam_db",
         "USER": "postgres",
         "PASSWORD": "8Fny?aXEFkh9ePA3",
         "PORT": os.getenv("POSTGRES_PORT", "5432"),

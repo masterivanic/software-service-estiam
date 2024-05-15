@@ -4,8 +4,8 @@ cp estiam_service/settings_docker_example.py estiam_service/settings_docker.py
 
 while ! PGPASSWORD=8Fny?aXEFkh9ePA3 psql -h ${POSTGRES_HOST} -U postgres -c '\q'; do echo "En attente du demarrage de postgresql..." && sleep 1; done
 echo "BD demarré avec succès.......>>"
-if ! PGPASSWORD=8Fny?aXEFkh9ePA3 psql -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -lqt | cut -d \| -f 1 | cut -d ' ' -f 2 | grep -q "^estiam_auth_db$"; then
-    PGPASSWORD=8Fny?aXEFkh9ePA3 createdb -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} estiam_auth_db
+if ! PGPASSWORD=8Fny?aXEFkh9ePA3 psql -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -lqt | cut -d \| -f 1 | cut -d ' ' -f 2 | grep -q "^estiam_db$"; then
+    PGPASSWORD=8Fny?aXEFkh9ePA3 createdb -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} estiam_db
 else
     echo "La database existe déjà..."
 fi
