@@ -159,4 +159,4 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-AUTH_ESTIAM_SERVICE = "http://localhost:8000/"
+AUTH_ESTIAM_SERVICE = "http://127.0.0.1:8030/"
