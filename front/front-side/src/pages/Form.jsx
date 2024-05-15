@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { useAuth } from '../AuthContext';
 
-function Form() {
+const Form = () => {
+  const { login } = useAuth();
+
+  const handleLogin = () => {
+    login();
+  };
     return (
         <div className='formular'>
 
@@ -23,7 +29,7 @@ function Form() {
                     <input className="input-connection" type='text'placeholder='Username' />
                     <input className="input-connection" type='password' placeholder='Password'/>
 
-                    <button type='submit' className='btn-connection'>Login </button>
+                    <button type='submit' className='btn-connection' onClick={handleLogin}>Login </button>
                 </form>
 
         </div>

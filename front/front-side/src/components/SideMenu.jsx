@@ -5,7 +5,6 @@ function SideMenu() {
   return (
     <div className="side-menu">
         <div className='menu-items'><Link className='links' to="/">Accueil</Link></div>
-        <div className='menu-items'><Link className='links' to="/form">Formulaire</Link></div>
         <div className='menu-items'><Link className='links' to="/users">Users List</Link></div>
     </div>
   );
