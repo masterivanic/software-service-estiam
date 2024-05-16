@@ -26,8 +26,8 @@ const Content = () => {
       <div className='container'>
         <Routes>
           <Route path="/" element={<Form />} />
-          <Route path="/home" element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} />
-          <Route path="/users" element={isAuthenticated ? <UserList /> : <Navigate to="/" />} />
+          <Route path="/home" element={ <HomePage />}></Route>
+          <Route path="/users" element={ <UserList />}></Route>
         </Routes>
       </div>
     </>

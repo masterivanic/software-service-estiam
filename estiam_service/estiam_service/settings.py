@@ -193,9 +193,11 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
 
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5000',
+    "http://localhost:5000",
 ]
+
 
 FRONT_END_URL = "http://127.0.0.1:8030/reset/password/"
 

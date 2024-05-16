@@ -16,7 +16,7 @@ const Form = () => {
   const [registerMessage, setRegisterMessage] = useState('');
 
   const [loginData, setLoginData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
   const [loginMessage, setLoginMessage] = useState('');
@@ -45,8 +45,7 @@ const Form = () => {
         password: registerData.password,
         password2: registerData.confirmPassword,
       });
-      setRegisterMessage(response.data.message);
-      navigate('/home'); 
+      setRegisterMessage("Sucessfully registrated");
     } catch (error) {
       setRegisterMessage(error.response.data.detail || 'Registration failed');
     }
@@ -56,7 +55,7 @@ const Form = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8030/api/auth/login/', {
-        username: loginData.username,
+        email: loginData.email,
         password: loginData.password,
       });
       login(response.data);
@@ -106,10 +105,10 @@ const Form = () => {
         <h1>Login</h1>
         <input
           className="input-connection"
-          type='text'
-          placeholder='Username'
-          name='username'
-          value={loginData.username}
+          type='email'
+          placeholder='E-mail'
+          name='email'
+          value={loginData.email}
           onChange={handleLoginChange}
         />
         <input
