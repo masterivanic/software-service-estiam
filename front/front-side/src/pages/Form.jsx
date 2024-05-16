@@ -34,7 +34,7 @@ const Form = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
-      setRegisterMessage("Passwords do not match");
+      setRegisterMessage("Les mots de passe ne correspondent pas");
       return;
     }
 
@@ -45,9 +45,9 @@ const Form = () => {
         password: registerData.password,
         password2: registerData.confirmPassword,
       });
-      setRegisterMessage("Sucessfully registrated");
+      setRegisterMessage("Vous êtes maintenant inscrit, vous pouvez vous connecter");
     } catch (error) {
-      setRegisterMessage(error.response.data.detail || 'Registration failed');
+      setRegisterMessage(error.response.data.detail || "Erreur lors de l'inscription");
     }
   };
 
@@ -61,7 +61,7 @@ const Form = () => {
       login(response.data);
       navigate('/home'); 
     } catch (error) {
-      setLoginMessage(error.response.data.detail || 'Login failed');
+      setLoginMessage(error.response.data.detail || 'Erreur lors de la connexion');
     }
   };
 
@@ -97,7 +97,7 @@ const Form = () => {
           value={registerData.confirmPassword}
           onChange={handleRegisterChange}
         />
-        <button type='submit' className='btn-register'>Register</button>
+        <button type='submit' className='btn-register'>S'inscrire</button>
         {registerMessage && <p>{registerMessage}</p>}
       </form>
 

@@ -5,7 +5,7 @@ import { useAuth } from '../AuthContext';
 function HomePage() {
     const [userData, setUserData] = useState(null);
     const { user } = useAuth();
-    console.log(user);
+    
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -28,7 +28,7 @@ function HomePage() {
             <div className='home'>
                 {userData ? (
                     <>
-                        <h1>Welcome, {userData.username}!</h1>
+                        <h1>Bienvenue, {userData.username}!</h1>
                         <p>Email: {userData.email}</p>
                     </>
                 ) : (

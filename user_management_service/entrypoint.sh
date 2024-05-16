@@ -1,6 +1,12 @@
 #!/bin/sh
 
-cp user_management_service/settings_docker_example.py user_management_service/settings_docker.py
+while ! PGPASSWORD=8Fny?aXEFkh9ePA3 psql -h ${POSTGRES_HOST} -U postgres -c '\q'; do echo "En attente du demarrage de postgresql..." && sleep 1; done
+echo "BD demarré avec succès.......>>"
+if ! PGPASSWORD=8Fny?aXEFkh9ePA3 psql -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -lqt | cut -d \| -f 1 | cut -d ' ' -f 2 | grep -q "^estiam_db$"; then
+    PGPASSWORD=8Fny?aXEFkh9ePA3 createdb -U postgres -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} estiam_db
+else
+    echo "La database existe déjà..."
+fi
 
 mkdir -p ${DJANGO_STATIC_ROOT} && chown estiamadm:www-data ${DJANGO_STATIC_ROOT}
 mkdir -p ${DJANGO_MEDIA_ROOT} && chown estiamadm:www-data ${DJANGO_MEDIA_ROOT}

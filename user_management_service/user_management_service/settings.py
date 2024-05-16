@@ -159,7 +159,12 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-AUTH_ESTIAM_SERVICE = "http://127.0.0.1:8030/"
+AUTH_ESTIAM_SERVICE = "http://localhost:8030/"
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5000",
+]
 
 try:
     from .settings_docker import *
