@@ -1,4 +1,4 @@
-version: "1.0"
+version: "2.0"
 
 services:
   db:
@@ -8,12 +8,13 @@ services:
       - POSTGRES_PASSWORD=8Fny?aXEFkh9ePA3
     volumes:
       - "postgres-data:/var/lib/postgresql/data/"
+    networks:
+      estiam_network:
 
   auth-backend:
     build:
       context: .
       dockerfile: Dockerfile
-    image: auth-backend:1.0
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_HOST=db
@@ -26,6 +27,12 @@ services:
       - db
     ports:
       - "8030:8030"
+    networks:
+      estiam_network:
+
+networks:
+  estiam_network:
+    external: true
 
 volumes:
   postgres-data:

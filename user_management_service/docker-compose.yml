@@ -1,4 +1,4 @@
-version: "1.0"
+version: "2.0"
 
 services:
   db:
@@ -8,6 +8,8 @@ services:
       - POSTGRES_PASSWORD=8Fny?aXEFkh9ePA3
     volumes:
       - "postgres-data:/var/lib/postgresql/data/"
+    networks:
+      estiam_network:
 
   user-backend:
     build:
@@ -26,6 +28,12 @@ services:
       - db
     ports:
       - "8000:8000"
+    networks:
+      estiam_network:
+
+networks:
+  estiam_network:
+    external: true
 
 volumes:
   postgres-data:

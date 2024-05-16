@@ -1,0 +1,18 @@
+version: "2.0"
+
+services:
+  front-end:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    networks:
+      - estiam_network
+
+networks:
+  estiam_network:
+    driver: bridge
