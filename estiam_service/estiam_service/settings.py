@@ -54,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "estiam_service.urls"
@@ -191,6 +192,10 @@ REST_FRAMEWORK = {
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5000',
+]
 
 FRONT_END_URL = "http://127.0.0.1:8030/reset/password/"
 

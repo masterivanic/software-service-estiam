@@ -10,7 +10,7 @@ ALLOWED_HOSTS = ["*"]
 # cors configuration
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("FRONT_HOST"),
+    "http://localhost:5000",
 ]
 
 # Media files (Images)
