@@ -9,7 +9,7 @@ RUN groupadd -r estiamadm && \
     apt-get update && \
     apt-get install -y locales postgresql-client locales-all python3-dev
 
-ARG DJANGO_DEV_SERVER_PORT=8000
+ARG DJANGO_DEV_SERVER_PORT=8081
 ARG POSTGRES_PORT=5432
 ARG POSTGRES_HOST=db
 ARG DJANGO_STATIC_ROOT=/var/www/static

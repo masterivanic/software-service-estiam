@@ -1,5 +1,4 @@
 **/local_settings.py
-**/settings_prod.py
 .git
 .mypy_cache
 .pytest_cache

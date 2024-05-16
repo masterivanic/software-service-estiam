@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-6ssf2p)9dn2*(@)8-+@=x8q7%%x8)$%_0^=%o&sz5&p&uign&k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -192,7 +192,8 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
 
-FRONT_END_URL = "http://127.0.0.1:8030/reset/password/"
+FRONT_END_URL = "http://127.0.0.1:5000/reset/password/"
+FRONT_HOST = "http://127.0.0.1:5000/"
 
 try:
     from .settings_docker import *
