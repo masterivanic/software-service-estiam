@@ -16,6 +16,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.serializers import TokenBlacklistSerializer
 from rest_framework_simplejwt.views import TokenBlacklistView
 from rest_framework_simplejwt.views import TokenObtainPairView
+from estiamauth.user.models import UserModel
 
 
 class ObtainTokenView(TokenObtainPairView):
@@ -104,3 +105,7 @@ class EstiamAuthViewSet(viewsets.GenericViewSet):
         logout_view = TokenBlacklistView.as_view()
         response = logout_view(request._request)
         return response
+    
+    @action(detail=False, methods=("GET",), permission_classes=())
+    def export_user_model(self, request: Request) -> Response:
+        return Response(data={"model": UserModel})
